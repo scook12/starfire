@@ -1,0 +1,22 @@
+{
+  "name": "starfire",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vite build"
+  },
+  "author": "Sam Cook",
+  "license": "MIT",
+  "dependencies": {
+    "@starbeam/js": "^0.8.9",
+    "@starbeam/timeline": "^0.8.9",
+    "@starbeam/universal": "^0.8.9",
+    "tsx-dom": "^2.0.0",
+    "typescript": "4.1"
+  },
+  "devDependencies": {
+    "vite": "^4.1.4"
+  }
+}
