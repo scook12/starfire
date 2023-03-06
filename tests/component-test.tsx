@@ -1,14 +1,15 @@
 import { Cell } from '@starbeam/universal';
-import Component from "../src/component";
+import { IComponent} from "../src/component";
 
-class TestComponent extends Component {
+class TestComponent implements IComponent {
+  id = "someId"
   data = Cell(0)
 
   dependencies = [this.data]
 
   render(): JSX.Element {
     return (
-      <p>this.data.current</p>
+      <p id={this.id}>this.data.current</p>
     )
   }
 }
