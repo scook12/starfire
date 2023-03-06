@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "tsx-dom",
+    "jsxImportSource": "../../src/dom",
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -18,7 +18,7 @@
     "skipLibCheck": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "types": ["vite/client", "tsx-dom"]
+    "types": ["vite/client"]
   },
   "exclude": ["node_nodules"],
 }

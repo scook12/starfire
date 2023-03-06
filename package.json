@@ -13,7 +13,7 @@
     "@starbeam/js": "^0.8.9",
     "@starbeam/timeline": "^0.8.9",
     "@starbeam/universal": "^0.8.9",
-    "tsx-dom": "^2.0.0",
+    "reflect-metadata": "^0.1.13",
     "typescript": "4.1"
   },
   "devDependencies": {
