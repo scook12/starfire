@@ -1,9 +1,7 @@
-import { Cell, Resource } from '@starbeam/universal';
-
-type AnyReactive = Cell<any> | Resource<any> 
+import { BaseProps } from './dom/types';
 
 export interface IComponent {
   id: string;
-  dependencies: AnyReactive[];
+  props?: BaseProps
   render(): JSX.Element;
 }
