@@ -1,4 +1,4 @@
-import { handleTracking } from "./metadata";
+import { handleTracking, renderFallback } from "./metadata";
 import { IComponent } from "./component"
 
 function getRootElement() {
@@ -6,19 +6,22 @@ function getRootElement() {
   return document.getElementById('app')
 }
 
-export default function render(component: any, parentNode?: JSX.Element): void {
-  const ElementFactory = (component: IComponent) => component.render()
 
-  const renderElement = () => {
-    const node = document.getElementById(component.id)
-    if (!node) {
-      if (parentNode) parentNode.appendChild(ElementFactory(component))
-      else getRootElement()?.appendChild(ElementFactory(component))
-    } else {
-      node.replaceWith(ElementFactory(component))
-    }
+async function renderElement(component: any, parentNode?: JSX.Element) {
+  await renderFallback(component)
+  const ElementFactory = async (component: IComponent) => await component.render()
+  const node = document.getElementById(component.id)
+  const child = await ElementFactory(component)
+  if (!node) {
+    if (parentNode) parentNode.appendChild(child)
+    else getRootElement()?.appendChild(child)
+  } else {
+    node.replaceWith(child)
   }
+  return child
+}
 
-  handleTracking(component, renderElement)
-  renderElement()
+export default function render(component: any, parentNode?: JSX.Element): void {
+  handleTracking(component, () => renderElement(component, parentNode))
+  renderElement(component, parentNode)
 }
