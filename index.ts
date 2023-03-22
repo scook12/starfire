@@ -1,8 +1,8 @@
-import { IntrinsicElementsHTML, IntrinsicElementsSVG } from "./src/dom/types";
+import { IntrinsicElementsHTML, IntrinsicElementsSVG } from "starfire/dom/types";
 
-export * from "./src/dom/createElement";
-export * from "./src/dom/jsx-runtime";
-export * from "./src/dom/types";
+export * from "starfire/dom/createElement";
+export * from "starfire/dom/jsx-runtime";
+export * from "starfire/dom/types";
 
 export interface TsxConfig {
     [s: string]: boolean;
