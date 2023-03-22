@@ -26,7 +26,7 @@ async function renderElement(component: any, parentNode?: JSX.Element) {
   return child
 }
 
-export default function render(component: any, parentNode?: JSX.Element): void {
+export default function render(component: any, parentNode?: JSX.Element | HTMLElement): void {
   handleTracking(component, () => renderElement(component, parentNode))
   renderElement(component, parentNode)
 }
