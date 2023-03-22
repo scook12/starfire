@@ -7,7 +7,6 @@ export function createElement(
     attrs: null | ComponentAttributes,
     ...children: ComponentChild[]
 ): JSX.Element {
-    console.log(tag, typeof tag)
     if (typeof tag === "function") return tag({ ...attrs, children });
 
     const element = createDomElement(tag, attrs);

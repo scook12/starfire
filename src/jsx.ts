@@ -1,4 +1,5 @@
-import { handleTracking, renderFallback } from "./metadata";
+import { observeDomNodeInsertion } from "starfire/dom/observer";
+import { handleTracking, getFallback } from "starfire/metadata";
 
 
 function getRootElement() {
@@ -6,6 +7,12 @@ function getRootElement() {
   return document.getElementById('app')
 }
 
+async function renderFallback(component: any): Promise<HTMLElement | null> {
+  const fallback = getFallback(component)
+  if (!fallback) return Promise.resolve(null)
+  render(fallback)
+  return await observeDomNodeInsertion(component.id)
+}
 
 async function renderElement(component: any, parentNode?: JSX.Element) {
   await renderFallback(component)
@@ -18,7 +25,6 @@ async function renderElement(component: any, parentNode?: JSX.Element) {
   } else node.replaceWith(child)
   return child
 }
-
 
 export default function render(component: any, parentNode?: JSX.Element): void {
   handleTracking(component, () => renderElement(component, parentNode))

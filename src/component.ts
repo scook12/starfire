@@ -1,5 +1,3 @@
-import { BaseProps } from './dom/types';
-
 export interface IComponent {
   id: string;
   props?: unknown
