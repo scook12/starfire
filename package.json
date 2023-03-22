@@ -1,9 +1,10 @@
 {
-  "name": "starfire",
+  "name": "@starfirejs/starfire",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "access": "public",
   "files": [
     "/dist",
     "package.json",
