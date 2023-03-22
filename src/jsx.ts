@@ -1,5 +1,5 @@
-import { observeDomNodeInsertion } from "starfire/dom/observer";
-import { handleTracking, getFallback } from "starfire/metadata";
+import { observeDomNodeInsertion } from "./dom/observer";
+import { handleTracking, getFallback } from "./metadata";
 
 
 function getRootElement() {
