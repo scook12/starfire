@@ -114,6 +114,60 @@ class MyAsyncComponent {
 render(<MyAsyncComponent/>)
 ```
 
+Reactivity optimizations in React generally use lifecycle hooks like `shouldComponentUpdate` that are specific to the component API. To implement similar behavior in Starfire, you'd use Formulas or implement equivalency logic for Cells.
+
+For example, take our counter component from earlier and assume you only want it to rerender for the first 10 update calls:
+
+```tsx
+import { track, render } from '@starfire'
+import { Cell } from '@starbeam/universal'
+
+class MyComponent {
+    id: string = 'my-component-id'
+
+    // cell configured to only update 10 times at most
+    initial = 0
+    @track count = Cell(this.initial, {
+        equals: (_, b) =>  b + this.initial === 10 ? true : false
+    })
+
+    increment() {
+        this.count.update(prev => prev + 1)
+    }
+
+    render() {
+        return (
+            <div id={this.id}>
+                <p>You've clicked {this.count.current} times!</p>
+                <button onClick={() => this.increment()}>Click Me</button>
+            </div>
+        )
+    }
+}
+
+render(<MyComponent/>)
+```
+
+If you wanted to re-use that reactive logic, you just extract it to a function:
+```ts
+function maxRenderCell(initial: number, max: number) {
+    return Cell(initial, {
+        equals: (_, b) =>  b + initial === max ? true : false
+    })
+}
+```
+
+And put it into your component:
+```ts
+@track count = maxRenderCell(0, 10)
+```
+
+Obviously, this is a contrived example, but reactives can hold more complex data like maps, tuples, etc and the comparisons can become more useful depending on what rendering you're trying to control. 
+
+Moreover, the principle of separating the data layer logic of equivalency from the component API is the important thing: you can write reactive logic that's re-usable across applications, components, and services in a framework-abstract way.
+
+That all comes from Starbeam. Starfire just provides a framework that hooks into the Starbeam API to generate UI responses to changes in your reactive data.
+
 ## Known issues and limitations
 
 ### IDs
