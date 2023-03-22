@@ -62,10 +62,8 @@ describe('Unit | metadata', () => {
   });
 
   test('fallback component is retrievable', async () => {
-    const fallbackRenderSpy = jest.fn()
     class FallbackTestComponent extends TestComponent {
       render() {
-        fallbackRenderSpy()
         return (
           <p>Fallback component</p>
         )
