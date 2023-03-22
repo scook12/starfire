@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import { jest } from '@jest/globals'
-import { handleTracking, StarfireMetadata, track, fallback, getFallback } from "starfire/metadata";
-import { IComponent } from "starfire/component";
+import { handleTracking, StarfireMetadata, track, fallback, getFallback } from "../src/metadata";
+import { IComponent } from "../src/component";
 import { Cell, TIMELINE } from '@starbeam/universal';
 
 class TestComponent implements IComponent {

@@ -1,7 +1,7 @@
-import render from 'starfire/jsx'
+import render from '../src/jsx'
 import { Cell } from '@starbeam/universal'
-import { track } from 'starfire/metadata'
-import { observeDomNodeInsertion } from 'starfire/dom/observer'
+import { track } from '../src/metadata'
+import { observeDomNodeInsertion } from '../src/dom/observer'
 
 const testComponentId: string = "someString"
 const testComponentText: string = "Test Component"

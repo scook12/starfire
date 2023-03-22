@@ -2,10 +2,14 @@
   "name": "starfire",
   "version": "0.0.1",
   "description": "",
-  "main": "index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "test": "jest --env=jsdom",
-    "build": "vite build"
+    "build": "tsc"
   },
   "author": "Sam Cook",
   "license": "MIT",
@@ -35,6 +39,6 @@
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "ts-jest": "^29.0.5",
-    "vite": "^4.1.4"
+    "vite": "^4.2.1"
   }
 }

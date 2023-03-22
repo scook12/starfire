@@ -1,8 +1,8 @@
-import { IntrinsicElementsHTML, IntrinsicElementsSVG } from "starfire/dom/types";
+import { IntrinsicElementsHTML, IntrinsicElementsSVG } from "./src/dom/types";
 
-export * from "starfire/dom/createElement";
-export * from "starfire/dom/jsx-runtime";
-export * from "starfire/dom/types";
+export * from "./src/dom/createElement";
+export * from "./src/dom/jsx-runtime";
+export * from "./src/dom/types";
 
 export interface TsxConfig {
     [s: string]: boolean;
@@ -16,7 +16,7 @@ type IntrinsicElementsCombined = IfTsxConfig<"html", IntrinsicElementsHTML, unkn
 
 declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace JSX {
+    export namespace JSX {
         // Return type of jsx syntax
         type Element = IfTsxConfig<"html", HTMLElement, never> | IfTsxConfig<"svg", SVGElement, never>;
 
