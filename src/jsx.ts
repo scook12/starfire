@@ -16,13 +16,14 @@ async function renderFallback(component: any): Promise<HTMLElement | null> {
 
 async function renderElement(component: any, parentNode?: JSX.Element) {
   await renderFallback(component)
-  const ElementFactory = async () => component.render()
+  let ElementFactory = async () => component.render()
   const node = document.getElementById(component.id)
   const child = await ElementFactory()
   if (!node) {
     if (parentNode) parentNode.appendChild(child)
     else getRootElement()?.appendChild(child)
   } else node.replaceWith(child)
+  ElementFactory = null as any
   return child
 }
 
