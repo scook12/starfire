@@ -6,7 +6,7 @@ A lightweight framework for writing reactive JSX with Starbeam.
 
 The framework is still a WIP, no usage or packages available yet.
 
-Starfire is an experimental framework built on new and experimental APIs, including TS decorators, reflect-metadata, and Starbeam.js. Using this for production workloads is not advisable.
+Starfire is an experimental framework built on new and experimental APIs, including TS decorators, reflect-metadata, and Starbeam.js. Using this for anything other than experimenting is not advisable.
 
 ## Goals
 
@@ -18,7 +18,7 @@ Starfire is an experimental framework built on new and experimental APIs, includ
 
 ### Writing components
 
-All starfire components are classes that have an `id` and a `render` method. No need to extend a base class. You can add `implements IComponent` using our `IComponent` interface if you like. 
+All starfire components are classes that have an `id` and a `render` method. No need to extend a base class. You can add `implements IComponent` using our `IComponent` interface for TS benefits. 
 
 You use Starbeam reactives to interact with state. We provide a `@track` decorator to mark which reactives should be monitored for changes and used for triggering rerenders.
 
@@ -29,7 +29,7 @@ import { Cell } from '@starbeam/universal'
 
 class MyComponent {
     // informs starfire of what component to render/update
-    id: string = 'my-component-id'
+    id = 'my-component-id'
 
     // tell starfire to rerender on changes to this Cell (only works with starbeam reactives)
     @track count = Cell(0)
@@ -57,7 +57,7 @@ Unlike in React, render functions do not have to be pure, so you can use async/a
 import { render } from '@starfire'
 
 class MyAsyncComponent {
-    id: string = 'my-async-component-id'
+    id = 'my-async-component-id'
 
     later(delay: number, value: any) {
         return new Promise(function(resolve) {
@@ -166,7 +166,7 @@ Obviously, this is a contrived example, but reactives can hold more complex data
 
 Moreover, the principle of separating the data layer logic of equivalency from the component API is the important thing: you can write reactive logic that's re-usable across applications, components, and services in a framework-abstract way.
 
-That all comes from Starbeam. Starfire just provides a framework that hooks into the Starbeam API to generate UI responses to changes in your reactive data.
+That all comes from Starbeam. Starfire just provides a framework that hooks into the Starbeam API to trigger updates to your UI whenever you change your reactive data.
 
 ## Known issues and limitations
 
