@@ -4,9 +4,9 @@ A lightweight framework for writing reactive JSX with Starbeam.
 
 ## Status
 
-The framework is still a WIP, no usage or packages available yet.
+I don't intend to do any more real work beyond this initial sketch, it was mostly for figuring out what fun we could have with Starbeam's timeline, JSX, and a dream. Avoiding expensive diff operations and instead relying on Starbeam's reactive data types to entirely control your render cycle seems like an interesting way to simplify a lot of what frontend frameworks are trying to do. This little experiment did work -- you can write components as described, render them, and let Starfire's use of the Starbeam timeline handle the rest. But I do not see the codebase here as a viable starting point for a real framework.
 
-Starfire is an experimental framework built on new and experimental APIs, including TS decorators, reflect-metadata, and Starbeam.js. Using this for anything other than experimenting is not advisable.
+In otherwords, Starfire is an experimental framework built on new and experimental APIs, including TS decorators, reflect-metadata, and Starbeam.js. Using this for anything other than playing around or getting inspired is not advisable.
 
 ## Goals
 
